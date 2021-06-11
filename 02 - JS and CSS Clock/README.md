@@ -1,4 +1,4 @@
-# JS & CSS Clock
+# JS + CSS Clock
 
 In this, the second project of the JavaScript 30 Day Challenge, we use
 plain vanilla javascript and CSS to implement a surprisingly nice analog
@@ -36,10 +36,17 @@ corresponding to the hours or minutes or seconds of the current time.
 This necessity of a corrective factor of 90 degrees seemed a little odd to me.
 
 After working on this project for a while, I realized that this 90 degree corrective 
-factor is completely unnecessary, with a slight modification to the CSS styles
-of the clock hands! Wes Bos's version of the clock hands results from making the 
+factor is completely unnecessary. With a slight modification to the CSS styles
+of the clock hands, we don't need it at all! This makes the javascript code that
+converts the hours, minutes and seconds to the number of degrees that the 
+corresponding hand needs to be rotated clearer and easier to read. It becomes
+clear that each calculation is computing the number of degrees to rotate a hand 
+from the twelve o'clock position, with zero being the twelve o'clock position, or
+straight up.
+
+Wes Bos's version of the clock hands results from making the 
 <div> boxes very short and wide. Could we, I wondered, instead make them very
-tall and wide, and thereby make them look like the vertical hands of a clock
+tall and narrow, and thereby make them look like the vertical hands of a clock
 pointing to the twelve o'clock position? As it turns out, yes we can!
 
 Wes Bos's CSS styles:
