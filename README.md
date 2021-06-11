@@ -1,4 +1,4 @@
-﻿![Original JavaScript30 Course](https://javascript30.com/images/JS3-social-share.png)
+﻿[![Original JavaScript30 Course](https://javascript30.com/images/JS3-social-share.png)](https://JavaScript30.com)
 
 # An Implementation of the JavaScript30 Challenge
 
