@@ -44,11 +44,45 @@ pointing to the twelve o'clock position? As it turns out, yes we can!
 
 Wes Bos's CSS styles:
 
-(CSS markup)
+```css
+.hand {
+  width: 50%;
+  height: 6px;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+}
+```
 
 My CSS styles:
 
-(CSS markup)
+```css
+.hand {
+  left: 50%;
+  background: black;
+  position: absolute;
+  transform-origin: bottom;    /* move rotation origin to bottom end of hands */
+  transition: transform 0.05s ease;
+}
+
+.hour-hand {
+  width: 8px;
+  height: 33.3%;
+  top: 16.7%;
+}
+
+.minute-hand {
+  width: 6px;
+  height: 48%;
+  top: 2%;
+}
+
+.second-hand {
+  width: 2px;
+  height: 50%;
+  transition-timing-function: cubic-bezier(0.0, 2.2, 0.06, 0.66);
+}
+```
 
 With these changes, the hands now appear like so, before any javascript
 transformation:
