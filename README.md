@@ -1,6 +1,6 @@
 ﻿[![Original JavaScript30 Course](https://javascript30.com/images/JS3-social-share.png)](https://JavaScript30.com)
 
-# An Implementation of the JavaScript30 Challenge
+# Taking the JavaScript30 Challenge
 
 This is my implementation of the JavaScript30 Challenge, a challenge to build 30
 things in 30 days using only plain vanilla Javascript, CSS and HTML, no
