@@ -16,8 +16,8 @@ clock, just like a real physical hand would do.
 
 ## Lessons Learned
 
-With a bit of creativity, the simple block of a <div> can be made to appear like
-the hands of a clock!
+With a bit of creativity, the simple block of a lowly `<div>` can be made to appear like
+the hand of a clock!
 
 ## Improvements
 
