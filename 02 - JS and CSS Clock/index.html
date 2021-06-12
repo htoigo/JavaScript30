@@ -86,6 +86,26 @@
   </style>
 
   <script>
+    function moveHand(hand, degrees) {
+      // hand is the HTMLElement of the clock hand to move;
+      // degrees is the position to which the hand should be moved, expressed
+      // as the number of degrees in a clockwise direction from the twelve
+      // o'clock position (Straight up).
+
+      if (degrees === 0) {
+        // If we are transitioning from just before the zero position to the
+        // zero position (e.g. from 59 secs to 0 secs), we need to turn off
+        // the CSS transition; otherwise, the hand will animate backwards
+        // (counterclockwise) from near-360 degrees back to 0 degrees.
+        hand.classList.add('no-transition');
+        hand.style.transform = `rotate(${degrees}deg)`;
+        hand.offsetHeight;    // trigger a reflow, flushing CSS changes
+        hand.classList.remove('no-transition');
+      } else {
+        hand.style.transform = `rotate(${degrees}deg)`;
+      }
+    }
+
     function updateTime() {
       const now = new Date();
       const hrs = now.getHours();
@@ -101,17 +121,9 @@
       const minDegrees = ((mins / 60) * 360) + ((secs / 60) * 6);
       const secDegrees = (secs / 60) * 360;
 
-      hourHand.style.transform = `rotate(${hrDegrees}deg)`;
-      minuteHand.style.transform = `rotate(${minDegrees}deg)`;
-
-      if (secs === 0) {
-        secondHand.classList.add('no-transition');
-        secondHand.style.transform = `rotate(${secDegrees}deg)`;
-        secondHand.offsetHeight;    // trigger a reflow, flushing CSS changes
-        secondHand.classList.remove('no-transition');
-      } else {
-        secondHand.style.transform = `rotate(${secDegrees}deg)`;
-      }
+      moveHand(hourHand, hrDegrees);
+      moveHand(minuteHand, minDegrees);
+      moveHand(secondHand, secDegrees);
     }
 
     const hourHand = document.querySelector('.hour-hand');
