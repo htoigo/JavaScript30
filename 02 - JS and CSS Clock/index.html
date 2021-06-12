@@ -11,6 +11,7 @@
         <div class="hand hour-hand"></div>
         <div class="hand minute-hand"></div>
         <div class="hand second-hand"></div>
+        <div class="pin"></div>
       </div>
     </div>
 
@@ -20,12 +21,11 @@
       background-size: cover;
       font-family: 'helvetica neue';
       text-align: center;
-      font-size: 10px;
+      font-size: 10px;                /* 10 px = 1 rem */
     }
 
     body {
       margin: 0;
-      font-size: 2rem;
       display: flex;
       flex: 1;
       min-height: 100vh;
@@ -35,48 +35,63 @@
     .clock {
       width: 30rem;
       height: 30rem;
-      border: 20px solid #d0b6a9;
+      border: 2rem solid #d0b6a9;
       border-radius: 50%;
       margin: 5% auto;
       position: relative;
       padding: 2rem;
       box-shadow:
-        0 0 0 4px rgba(0, 0, 0, 0.1),
-        inset 0 0 0 3px #e3c7b9,
-        inset 0 0 10px black,
-        0 0 10px rgba(0, 0, 0, 0.2);
+        0 0 0 0.4rem rgba(0, 0, 0, 0.1),
+        inset 0 0 0 0.3rem #e3c7b9,
+        inset 0 0 1rem black,
+        0 0 1rem rgba(0, 0, 0, 0.2);
     }
 
     .clock-face {
       position: relative;
       width: 100%;
       height: 100%;
-      transform: translateY(-3px);   /* account for thickness of the clock hands */
+    }
+
+    .pin {
+      width: 1rem;
+      height: 1rem;
+      left: 14.5rem;
+      top: 14.5rem;
+      background: #797471;
+      position: absolute;
+      clip-path: circle(0.5rem);
     }
 
     .hand {
-      left: 50%;
       background: black;
       position: absolute;
-      transform-origin: bottom;    /* move rotation origin to bottom end of hands */
       transition: transform 0.05s ease;
     }
 
+    /* The rules below position the three hands at the twelve o'clock position. */
+
     .hour-hand {
-      width: 8px;
-      height: 33.3%;
-      top: 16.7%;
+      width: 0.8rem;
+      height: 10rem;
+      left: 14.6rem;
+      top: 5rem;
+      transform-origin: bottom;
     }
 
     .minute-hand {
-      width: 6px;
-      height: 48%;
-      top: 2%;
+      width: 0.6rem;
+      height: 15rem;
+      left: 14.7rem;
+      transform-origin: bottom;
     }
 
     .second-hand {
-      width: 2px;
-      height: 50%;
+      width: 0.2rem;
+      height: 18rem;
+      left: 14.9rem;
+      top: 0.6rem;
+      transform-origin: 0rem 14.4rem;
       transition-timing-function: cubic-bezier(0.0, 2.2, 0.06, 0.66);
     }
 
