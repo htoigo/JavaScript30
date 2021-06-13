@@ -1,4 +1,4 @@
-# JS + CSS Clock
+# JS and CSS Clock
 
 In this, the second project of the JavaScript 30 Day Challenge, we use
 plain vanilla javascript and CSS to implement a surprisingly nice analog
