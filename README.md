@@ -23,7 +23,7 @@ I have also re-implemented these exercises in React. Go see my React30 repo.
 ## The Exercises
 
 1.  Javascript Drum Kit
-2.  CSS + JS Clock
+2.  [JS and CSS Clock](./02 - JS and CSS Clock/index.html)
 3.  Playing with CSS Variables and JS
 4.  Array Cardio Day 1
 5.  Flex Panels Image Gallery
