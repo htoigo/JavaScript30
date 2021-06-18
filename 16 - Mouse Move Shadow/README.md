@@ -32,18 +32,18 @@ of the `<H1>` element, and if they are, then adjust them by adding the X
 coordinate of the left edge of the H1 to the X coordinate and the Y offset of
 the top of the `<H1>` to the Y coordinate.
 
-    ```javascript
-    if (this !== e.target) {
-      x = x + e.target.offsetLeft;
-      y = y + e.target.offsetTop;
-    }
-    ```
+```javascript
+  if (this !== e.target) {
+    x = x + e.target.offsetLeft;
+    y = y + e.target.offsetTop;
+  }
+```
 
 ## Notes
 
 * An element on the page can be made editable by the viewer within the browser by
   adding the `contenteditable` attribute to it, right in the HTML tag.
 
-    ```html
-    <h1 contenteditable>🔥WOAH!</h1>
-    ```
+```html
+  <h1 contenteditable>🔥WOAH!</h1>
+```
