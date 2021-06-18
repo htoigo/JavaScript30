@@ -16,21 +16,21 @@ The offsetX and offsetY properties of the event object display some interesting
 behavior. As the mouse is moved over the hero at the top of the page, the
 offsetX and offsetY properties of the event object are the x and y coordinates
 from the top left of the hero object, which as we have set it up is also the top
-left of the browser window. However, as the mouse passes over the <H1> element
+left of the browser window. However, as the mouse passes over the `<H1>` element
 within the hero, the offsetX and offsetY coordinates change frame of reference,
 so that the 0, 0 origin is now the top left corner of the H1 element, not the
 hero. This results in a discontinuous jump in the X coordinate, in which it is
 increasing as the mouse moves left to right across the page, but then jumps back
-to 0 when it crosses the left edge of the H1 element. A similar effect happens
-to the Y coordinate.
+to 0 when it crosses the left edge of the `<H1>` element. A similar effect
+happens to the Y coordinate.
 
 In this case, we would prefer a nice continuous increase in the X coordinate
 from left to right across the page, with no discontinuous jumps, and the same
 for the Y coordinate. In order to achieve this, we need to normalize the
 coordinates, by checking whether the current mouse location is within the bounds
-of the H1 element, and if they are, then adjust them by adding the X coordinate
-of the left edge of the H1 to the X coordinate and the Y offset of the top of
-the H1 to the Y coordinate.
+of the `<H1>` element, and if they are, then adjust them by adding the X
+coordinate of the left edge of the H1 to the X coordinate and the Y offset of
+the top of the `<H1>` to the Y coordinate.
 
     ```javascript
     if (this !== e.target) {
