@@ -39,8 +39,8 @@
 <script>
   const hero = document.querySelector('.hero');
   const text = hero.querySelector('h1');
-  const walkD = 4;    // px
-  const walkL = 14;    // px
+   const darkShadowWalk = 2;      // px
+   const lightShadowWalk = 14;    // px
 
   function shadow(e) {
     const { offsetWidth: width, offsetHeight: height } = hero;
@@ -51,13 +51,16 @@
       y = y + e.target.offsetTop;
     }
 
-    const xWalkD = Math.round(10 + (x / width * walkD) - (walkD / 2));
-    const yWalkD = Math.round(10 + (y / height * walkD) - (walkD / 2));
-    const xWalkL = Math.round((x / width * walkL) - (walkL / 2));
-    const yWalkL = Math.round((y / height * walkL) - (walkL / 2));
+     const darkShadowX = Math.round(10 + (x / width * darkShadowWalk) - (darkShadowWalk / 2));
+     const darkShadowY = Math.round(10 + (y / height * darkShadowWalk) - (darkShadowWalk / 2));
+     const lightShadowX = Math.round((x / width * lightShadowWalk) - (lightShadowWalk / 2));
+     const lightShadowY = Math.round((y / height * lightShadowWalk) - (lightShadowWalk / 2));
 
-    console.log("xWalkD=", xWalkD, "yWalkD=", yWalkD,
-                "xWalkL=", xWalkL, "yWalkL=", yWalkL);
+     text.style.textShadow = `
+       ${lightShadowX}px ${lightShadowY}px 0 rgba(0, 0, 0, 0.12),
+       ${darkShadowX}px ${darkShadowY}px 0 rgba(0, 0, 0, 0.20)
+     `;
+   }
 
     text.style.textShadow = `
        ${xWalkL}px ${yWalkL}px 0 rgba(0, 0, 0, 0.12),
