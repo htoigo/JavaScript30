@@ -36,20 +36,20 @@
   }
   </style>
 
-<script>
-  const hero = document.querySelector('.hero');
-  const text = hero.querySelector('h1');
+  <script>
+   const hero = document.querySelector('.hero');
+   const text = hero.querySelector('h1');
    const darkShadowWalk = 2;      // px
    const lightShadowWalk = 14;    // px
 
-  function shadow(e) {
-    const { offsetWidth: width, offsetHeight: height } = hero;
-    let { offsetX: x, offsetY: y } = e;
+   function shadow(e) {
+     const { offsetWidth: width, offsetHeight: height } = hero;
+     let { offsetX: x, offsetY: y } = e;
 
-    if (this !== e.target) {
-      x = x + e.target.offsetLeft;
-      y = y + e.target.offsetTop;
-    }
+     if (this !== e.target) {
+       x = x + e.target.offsetLeft;
+       y = y + e.target.offsetTop;
+     }
 
      const darkShadowX = Math.round(10 + (x / width * darkShadowWalk) - (darkShadowWalk / 2));
      const darkShadowY = Math.round(10 + (y / height * darkShadowWalk) - (darkShadowWalk / 2));
@@ -62,17 +62,7 @@
      `;
    }
 
-    text.style.textShadow = `
-       ${xWalkL}px ${yWalkL}px 0 rgba(0, 0, 0, 0.12),
-       ${xWalkD}px ${yWalkD}px 0 rgba(0, 0, 0, 0.20)
-    `;
-
-     /* ${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7),
-      * ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
-      * ${yWalk * -1}px ${xWalk}px 0 rgba(0,0,255,0.7) */
-  }
-
-  hero.addEventListener('mousemove', shadow);
-</script>
+   hero.addEventListener('mousemove', shadow);
+  </script>
 </body>
 </html>
