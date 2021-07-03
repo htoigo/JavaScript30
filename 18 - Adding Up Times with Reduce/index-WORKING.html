@@ -182,7 +182,38 @@
     </li>
   </ul>
 
+  <div class="summary">
+    Total time of all videos (hr:min:sec):
+    <span id="total-time-str"> h:m:s </span>
+  </div>
+
+  <style>
+   .summary {
+     font-size: 20px;
+     font-weight: bold;
+   }
+   #total-time-str {
+     margin-left: 20px;
+   }
+  </style>
+
   <script>
+   const videos = Array.from(document.querySelectorAll('li[data-time]'));
+   const totalTimeInSecs = videos
+     .map(li => li.dataset.time)
+     .map((s) => {
+       const [mins, secs] = s.split(':').map(parseFloat);
+       return (mins * 60) + secs;
+     })
+     .reduce((acc, x) => acc + x, 0);
+   const totalTimeHrs = Math.floor(totalTimeInSecs / 3600);
+   const secsRemaining = totalTimeInSecs % 3600;
+   const totalTimeMins = Math.floor(secsRemaining / 60);
+   const totalTimeSecs = secsRemaining % 60;
+   const totalTimeStr = totalTimeHrs + ':' + totalTimeMins + ':' + totalTimeSecs;
+
+   const totalTimeEl = document.querySelector('#total-time-str');
+   totalTimeEl.innerHTML = totalTimeStr;
   </script>
 </body>
 </html>
