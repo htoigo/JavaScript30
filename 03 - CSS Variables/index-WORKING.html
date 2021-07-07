@@ -21,11 +21,21 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
-   :root {
-     --spacing: 10;
-     --blur: 10;
-     --base: #ffc600;
-   }
+    :root {
+      --spacing: 10px;
+      --blur: 10px;
+      --base: #ffc600;
+    }
+
+    .hl {
+      color: var(--base);
+    }
+
+    img {
+      padding: var(--spacing);
+      background-color: var(--base);
+      filter: blur(var(--blur));
+    }
 
     /*
       misc styles, nothing to do with CSS variables
@@ -50,11 +60,35 @@
   </style>
 
   <script>
+   const root = document.querySelector(':root');
+
+   function handleSpacingInput(event) {
+     // User changed spacing value; update --spacing variable to match.
+     root.style.setProperty('--spacing', `${event.target.value}${spacingUnits}`);
+   }
+
+   function handleBlurInput(event) {
+     // User changed blur value; update --blur variable to match.
+     root.style.setProperty('--blur', `${event.target.value}${blurUnits}`);
+   }
+
+   function handleColorInput(event) {
+     // User picked a new color; update --base variable to match.
+     // The value property of a color input element is a string containing a
+     // color hex code, e.g. '#73ff00'.
+     root.style.setProperty('--base', event.target.value);
+   }
+
    const spacingSlider = document.querySelector('input#spacing');
-   spacingSlider.addEventListener('change', handleSpacingChange);
-   const imgEl = document.querySelector('img');
-   imgEl.style.border = '10px solid yellow';
-   console.log('imgEl=', imgEl);
+   const spacingUnits = spacingSlider.dataset.sizing;
+   spacingSlider.addEventListener('input', handleSpacingInput);
+
+   const blurSlider = document.querySelector('input#blur');
+   const blurUnits = blurSlider.dataset.sizing;
+   blurSlider.addEventListener('input', handleBlurInput);
+
+   const baseColorPicker = document.querySelector('input#base');
+   baseColorPicker.addEventListener('input', handleColorInput);
   </script>
 
 </body>
