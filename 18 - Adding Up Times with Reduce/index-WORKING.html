@@ -177,7 +177,7 @@
     <li data-time="1:56">
       Video 57
     </li>
-    <li data-time="4:04">
+    <li data-time="8:14">
       Video 58
     </li>
   </ul>
@@ -198,19 +198,30 @@
   </style>
 
   <script>
-   const videos = Array.from(document.querySelectorAll('li[data-time]'));
+   const videos = [...document.querySelectorAll('li[data-time]')];
    const totalTimeInSecs = videos
      .map(li => li.dataset.time)
-     .map((s) => {
-       const [mins, secs] = s.split(':').map(parseFloat);
+     .map((time) => {
+       const [mins, secs] = time.split(':').map(x => parseInt(x, 10));
        return (mins * 60) + secs;
      })
      .reduce((acc, x) => acc + x, 0);
+
+   const totalTimeInSecs2 = videos.reduce((acc, vid) => {
+     const vidTimeStr = vid.dataset.time;
+     const [mins, secs] = vidTimeStr.split(':').map(x => parseInt(x, 10));
+     const vidSecs = (mins * 60) + secs;
+     return acc + vidSecs;
+   }, 0);
+
    const totalTimeHrs = Math.floor(totalTimeInSecs / 3600);
    const secsRemaining = totalTimeInSecs % 3600;
    const totalTimeMins = Math.floor(secsRemaining / 60);
    const totalTimeSecs = secsRemaining % 60;
-   const totalTimeStr = totalTimeHrs + ':' + totalTimeMins + ':' + totalTimeSecs;
+   /* const totalTimeStr = totalTimeHrs + ':' + totalTimeMins + ':' + totalTimeSecs; */
+   const totalTimeStr = String(totalTimeHrs) + ':'
+                      + String(totalTimeMins).padStart(2, '0') + ':'
+                      + String(totalTimeSecs).padStart(2, '0');
 
    const totalTimeEl = document.querySelector('#total-time-str');
    totalTimeEl.innerHTML = totalTimeStr;
