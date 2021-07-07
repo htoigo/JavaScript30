@@ -51,7 +51,7 @@
 
   <script>
    const spacingSlider = document.querySelector('input#spacing');
-   spacingSlider.addEventListener();
+   spacingSlider.addEventListener('change', handleSpacingChange);
    const imgEl = document.querySelector('img');
    imgEl.style.border = '10px solid yellow';
    console.log('imgEl=', imgEl);
