@@ -137,9 +137,15 @@
    }
 
    function toggleActive(event) {
-     console.log(event);
      if (event.propertyName.includes('flex')) {
-       this.classList.toggle('open-active');
+       // Simply toggling the 'open-active' class here results in the top & bottom
+       // words coming on-screen when the panel is closed, if the user clicks twice
+       // quickly.
+       if (this.classList.contains('open')) {
+         this.classList.add('open-active');
+       } else {
+         this.classList.remove('open-active');
+       }
      }
    }
 
