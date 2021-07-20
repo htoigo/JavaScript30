@@ -26,7 +26,7 @@
                            .map(result => result.transcript)
                            .join('');
 
-   const poopscript = transcript.replace(/poop|poo|shit|dump/gi, '💩');
+   const poopScript = transcript.replace(/poop|poo|shit|dump/gi, '💩');
    p.textContent = poopScript;
 
    if (event.results[0].isFinal) {
@@ -34,6 +34,8 @@
      words.appendChild(p);
    }
  });
+
+ recognition.addEventListener('end', recognition.start);
 
  recognition.start();
 </script>
